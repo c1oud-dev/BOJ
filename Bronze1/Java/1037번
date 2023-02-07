@@ -1,0 +1,27 @@
+#15:42 - 16:20
+
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+		int N; 
+		int[] num = new int[50]; //크기 50인 배열 생성
+		
+		int max = -2147000000;
+		int min = 2147000000;
+		
+		Scanner sc = new Scanner(System.in); 
+		N = sc.nextInt();
+		for(int i = 0; i < N; i++){
+		    num[i] = sc.nextInt();
+		    max = Math.max(max, num[i]);
+		    min = Math.min(min, num[i]);
+		}
+		System.out.println(max*min);
+	}
+}
+
+
+#다른 풀이
+정렬 후 max, min 사용
