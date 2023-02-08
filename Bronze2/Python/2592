@@ -1,0 +1,16 @@
+#16:45 - 17:47
+
+l = []
+for i in range(10):
+    l.append(int(input()))
+print(sum(l)//10)
+
+num = [0]*1001
+for j in l:
+    num[j] += 1
+print(num.index(max(num)))
+
+#array.index(x) : 리스트에서 x의 인덱스 반환
+#array.index(x, start) : 리스트[start:]에서 x의 인덱스 반환
+#array.index(x, start, stop) : 리스트[start:stop]에서 x의 인덱스 반환
+#중복된 원소가 있으면 가장 작은 인덱스를 리턴, 문자열도 가능
