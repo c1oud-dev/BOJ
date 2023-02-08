@@ -1,0 +1,9 @@
+#18:20 - 18:28
+
+T = int(input())
+for _ in range(T):
+    n = list(map(int, input().split()))
+    n.sort() #n.sort(reverse = True) 로도 변경 가능
+    n.reverse()
+    print(n[2])
+    n = []
