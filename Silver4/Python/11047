@@ -1,0 +1,14 @@
+# 20:53 - 21:02
+
+N, K = map(int, input().split())
+coin = []
+for i in range(N):
+    coin.append(int(input()))
+coin.sort(reverse=True)
+
+cnt = 0
+for j in coin:
+    cnt += K // j
+    K %= j
+print(cnt)
+
