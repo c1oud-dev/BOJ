@@ -1,0 +1,23 @@
+# 19:20-20:43
+
+N = int(input())
+l = 0
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+for i in range (N):
+    l += min(a)*max(b)
+    a.remove(min(a))
+    b.remove(max(b))
+print(l)
+
+#다른 풀이
+A는 오름차순 정렬, B는 내림차순 정렬 후 차례로 곱해서 더하는 방법도 있음
+
+#회고
+1. zip(리스트1, 리스트2) : 묶임
+2. 공백으로 입력 받을 시 for문 안 써도 됨
+
+for i in range(N):
+    a = list(map(int, input().split()))
+이러면 5행을 입력 받아야 함. 
