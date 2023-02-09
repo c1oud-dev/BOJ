@@ -12,3 +12,6 @@ for j in coin:
     K %= j
 print(cnt)
 
+
+
+#5585와 유사한 문제
