@@ -1,0 +1,27 @@
+# 18:35 - 19:50
+
+M, N = map(int, input().split())
+L = list(map(int, input().split()))
+
+start = 1
+end = max(L)
+r = 0
+while start <= end:
+    m = (start + end) // 2
+    cnt = 0
+    for i in L:
+        cnt += (i // m) #수정
+
+    if M <= cnt:
+        r = m
+        start = m + 1
+    elif M > cnt:
+        end = m - 1
+    else:
+        r = 0
+print(r)
+
+
+
+#
+수정한 부분 다시 봐야함
