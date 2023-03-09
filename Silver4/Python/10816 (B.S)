@@ -1,0 +1,81 @@
+# 15:30 - 16:55 / 17:30 - 18:15(풀이)
+
+#시간초과
+M = int(input())
+MCard = list(map(int, input().split()))
+N = int(input())
+NCard = list(map(int, input().split()))
+
+MCard.sort() #sort O(nlogn)
+r = []
+def Binary_Search(x):
+    start = 0
+    end = M - 1
+    num = 0
+    while start <= end:
+        mid = (start + end) // 2
+        if MCard[mid] == x:
+            #num += 1
+            #MCard.remove(x)
+            return MCard.count(x) #count O(n^2)
+
+        if MCard[mid] < x:
+            start = mid + 1
+        else:
+            end = mid - 1
+    return 0
+
+for i in NCard:
+    r.append(Binary_Search(i))
+print(r)
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+##128388KB / 2856ms
+
+from sys import stdin
+N = stdin.readline()
+NCard = sorted(map(int, stdin.readline().split()))
+M = stdin.readline()
+MCard = map(int, stdin.readline().split())
+
+def Binary_Search(x, NCard, start, end):
+    if start > end:
+        return 0
+    mid = (start + end) // 2
+    if NCard[mid] == x:
+        return cnt.get(x) #dict.get(key, default = None)
+    elif NCard[mid] > x:
+        return Binary_Search(x, NCard, start, mid - 1)
+    else:
+        return Binary_Search(x, NCard, mid + 1, end)
+
+cnt = { } #dictionary
+for i in NCard:
+    if i in cnt:
+        cnt[i] += 1
+    else:
+        cnt[i] = 1
+
+for i in MCard:
+    print(Binary_Search(i, NCard, 0, len(NCard)-1), end = ' ')
+    
+    
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+#126568KB / 964ms
+
+from sys import stdin
+from collections import Counter #collections - 컨테이너 데이터형
+M = stdin.readline()
+MCard = sorted(map(int, stdin.readline().split()))
+N = stdin.readline()
+NCard = map(int, stdin.readline().split())
+
+C = Counter(MCard) #Counter({10: 3, -10: 2, 3: 2, 2: 1, 6: 1, 7: 1})
+#print(C) #Dictionary 자료형 출력
+#print(' '.join(f'{C[m]}' if m in C else '0' for m in NCard))
+#위의 print문 풀어쓰면 아래 for문 처럼 하면 됨.
+for m in NCard: #Counter(MCard)에 NCard의 요소가 있다면 해당 숫자를 출력하고 없으면 0을 출력
+    if m in C:
+        print(C[m], end= " ")
+    else:
+        print(0, end= " ")
