@@ -1,0 +1,5 @@
+# 22:15 - 22:19
+
+N = int(input())
+N //= 4
+print("long "*N + "int")
