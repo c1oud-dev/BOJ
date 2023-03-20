@@ -1,0 +1,5 @@
+# 22:37 - 22:38
+
+word = input()
+k = int(input())
+print(word[k-1])
