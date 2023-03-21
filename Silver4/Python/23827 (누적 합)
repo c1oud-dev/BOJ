@@ -1,0 +1,32 @@
+# 21:30 - 22:00
+
+from sys import stdin
+
+N = int(stdin.readline())
+A = list(map(int, stdin.readline().split()))
+
+#시간 초과
+from itertools import combinations
+ans = 0
+for i, j in combinations(A, 2):
+    ans += i*j
+print(ans%1000000007)
+
+#시간 초과
+ans = 0
+for i in range(N):
+    for j in range(i+1, N):
+        ans += A[i]*A[j]
+ans %= 1000000007
+print(ans)
+
+
+올바른 풀이
+ans = 0
+l = sum(A)
+for i in A:
+    l -= i
+    ans = (ans+i*l)%1000000007 
+print(ans)
+
+#시간 초과 문제 해결하려면 배열, 라이브러리 사용하지 말고 직접 쉽게 수학적으로 구현해야 한다.
