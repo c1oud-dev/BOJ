@@ -1,0 +1,51 @@
+# 02:15-02:50
+
+메모리/시간 - 41316KB	252ms
+import sys
+input = sys.stdin.readline
+N, M = map(int, input().split())
+n = list(map(int, input().split()))
+
+prefix_sum = [0]*(N+1)
+
+for k in range(N):
+    prefix_sum[k+1] = prefix_sum[k] + n[k]
+
+for _ in range(M):
+    i, j = map(int, input().split())
+    print(prefix_sum[j] - prefix_sum[i-1]) #다시 보기
+    
+
+#시간초과 풀이
+1.
+for _ in range(M):
+    i, j = map(int, input().split())
+    ans = 0
+    while i <= j:
+        ans += n[i-1]
+        i += 1
+    print(ans)
+    
+2.
+for _ in range(M):
+    i, j = map(int, input().split())
+    prefix_sum = [0] * (N + 2)
+    while i <= j:
+        prefix_sum[i+1] = prefix_sum[i] + n[i-1]
+        i += 1
+    print(prefix_sum[j+1])
+
+3.
+def p_s(x, y):
+    prefix_sum = [0] * (N + 2)
+    for k in range(x, y+1):
+        prefix_sum[k+1] = prefix_sum[k] + n[k-1]
+    return prefix_sum[j+1]
+
+for _ in range(M):
+    i, j = map(int, input().split())
+    print(p_s(i, j))
+    
+    
+#회고
+미리 리스트의 누적 합을 구하고, 특정 인덱스 값을 빼주면 된다.  
