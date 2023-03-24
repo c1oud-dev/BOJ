@@ -1,0 +1,21 @@
+#11:40 - 11:56
+
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+word = []
+for _ in range(N):
+    word.append(input())
+word = list(set(word))
+word.sort()
+word.sort(key = len)
+for i in word:
+    print(i.rstrip()) #공백 문자 때문에 제거 해줘야 한다.
+    
+    
+    
+--------------------------------
+set() : 중복 제거
+sort(key = len) : 길이대로 정렬
+주의할 점 : 정렬을 한 후 set을 쓰면 안 됨. 중복을 제거한 후에 정렬을 해줘야 한다. 
