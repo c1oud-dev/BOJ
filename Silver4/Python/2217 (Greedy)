@@ -1,0 +1,54 @@
+# 17:30 - 18:51
+
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+n =[]
+for _ in range(N):
+    n.append(int(input()))
+
+n.sort() #파이썬 내장 sort()함수는 O(NlogN)의 시간복잡도를 갖습니다.
+ans = []
+for i in n:
+    ans.append(i * N)
+    N -= 1
+print(max(ans))
+
+
+#시간초과
+1.
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+n =[]
+for _ in range(N):
+    n.append(int(input()))
+
+res = 0
+ans = 0
+min_n = min(n)
+for i in range(N):
+    if n[i] > min(n):
+        N -= 1
+    res = n[i] * N
+    if ans <= res:
+        ans = res
+
+print(ans)
+
+2. 
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+n = []
+for _ in range(N):
+    n.append(int(input()))
+
+ans = 0
+for i in n:
+    if sum(n) >= N * i:
+        ans = N * i
+print(ans)
