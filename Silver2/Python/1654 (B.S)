@@ -1,0 +1,30 @@
+# 19:10 - 19:47
+
+import sys
+input = sys.stdin.readline
+
+K, N = map(int, input().split())
+n = []
+for _ in range(K):
+    n.append(int(input()))
+
+start = 1
+end = max(n)
+ans = 0
+#자르고 버리는 게 아닌 남은 것도 쓸 수 있다는 걸 생각, 다 자를 필요도 없다.
+while start <= end:
+    mid = (start + end) // 2
+    res = 0
+    for i in n:
+        while mid <= i:
+            i -= mid
+            res += 1
+            #만일 자르다가 답과 같아지는 경우가 있으니 자르면서 확
+            if res == N:
+                ans = mid
+                break
+    if res < N:
+        end = mid - 1
+    else:
+        start = mid + 1
+print(ans)
