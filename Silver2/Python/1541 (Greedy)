@@ -1,0 +1,24 @@
+#15:17 - 16:08 // 17:50 - 19:03
+
+import sys
+input = sys.stdin.readline
+
+num = input().split('-')
+ans = 0
+
+for i in num[0].split('+'): #[1]을 하면 list index out of range 에러가 뜸 [0]이어야만 하는 이유는?
+    ans += int(i)
+for i in num[1:]:
+    #print(i) #50+40이 출력
+    for j in i.split('+'):
+        ans -= int(j)
+
+print(ans)
+
+
+
+
+-----------------------------------------------------------------------
+#회고
+시간이 굉장히 오래 걸렸다. 정수만 다루다가 문자열을 다루니 어려웠다.
+문제를 어떤 방법으로 풀 건지는 알았지만 구현하는 데에 시간이 오래 걸렸고, 결국 다른 풀이를 보고 풀었다. 
