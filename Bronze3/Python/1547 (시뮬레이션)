@@ -1,0 +1,20 @@
+#21:40- 22:13
+
+import sys
+input = sys.stdin.readline
+ball = 1
+M = int(input())
+
+for _ in range(M):
+    x, y = map(int, input().split())
+    if x != ball and y == ball:
+        ball = x
+    elif y != ball and x == ball:
+        ball = y
+
+if ball >= 1 and ball <= 3:
+    print(ball)
+else:
+    print(-1)
+    
+    
