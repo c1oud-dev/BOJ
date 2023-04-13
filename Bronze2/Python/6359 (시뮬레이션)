@@ -21,5 +21,11 @@ for _ in range(T):
     print(cnt)
     
   
+  #다른 풀이
+from math import floor
+t = int(input())
+for i in range(t):
+    n = int(input())
+    print(floor(n ** 0.5))
   ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
   시뮬레이션의 쉬운 문제는 대부분 조건문으로 바꿔주게 만들어야 하는 듯
