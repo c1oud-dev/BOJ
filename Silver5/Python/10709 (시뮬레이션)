@@ -1,0 +1,31 @@
+#16:20 - 15:20
+
+import sys
+input = sys.stdin.readline
+
+h, w = map(int, input().split())
+area = [list(map(str, input().rstrip())) for _ in range(h)]
+
+#ans = [[0 for col in range(w)] for row in range(h)]
+#ans = [[0 for _ in range(w)] for _ in range(h)]
+#out = [[0*w] for _ in range(h)]
+
+for i in area:
+    cnt = 0
+    ans = []
+    for j in i:
+        if j == 'c':
+            cnt = 0
+            print(0, end = ' ')
+            cnt += 1
+        elif j == '.' and cnt != 0:
+            print(cnt, end = ' ')
+            cnt += 1
+        elif j == '.' and cnt == 0:
+            print(-1, end = ' ')
+    print(end = '\n')
+    
+    
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+※주의
+출력할 때 공백 포함, 줄바꿈 포함
