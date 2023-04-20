@@ -1,0 +1,67 @@
+#21:45 - 22:28
+
+import sys
+from collections import deque
+deq = deque()
+
+input = sys.stdin.readline
+for _ in range(int(input())):
+    n = input().rstrip()
+    num = []
+    back = 0
+    if "push_front" in n:
+        for i in n:
+            if i.isdigit():
+                num.append(i)
+        num = ''.join(num)
+        deq.appendleft(num)
+    elif "push_back" in n:
+        for i in n:
+            if i.isdigit():
+                num.append(i)
+        num = ''.join(num)
+        deq.append(num)
+    elif "pop_front" in n:
+        if not deq:
+            print(-1)
+        else:
+            print(deq.popleft())
+    elif "pop_back" in n:
+        if not deq:
+            print(-1)
+        else:
+            print(deq.pop())
+    elif "size" in n:
+        print(len(deq))
+    elif "empty" in n:
+        if not deq:
+            print(1)
+        else:
+            print(0)
+    elif "front" in n:
+        if not deq:
+            print(-1)
+        else:
+            print(deq[0])
+    elif "back" in n:
+        if not deq:
+            print(-1)
+        else:
+            back = deq.pop()
+            print(back)
+            deq.append(back)
+
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+- deque.append(item) : 오른쪽 끝에 삽입
+- deque.appendleft(item) : 왼쪽 끝에 삽입
+- deque.pop() : 가장 오른쪽의 요소 반환 및 삭제
+- deque.popleft() : 가장 왼쪽의 요소 반환 및 삭제
+- deque.extend(array) : 주어진 array 배열을 순회하며 q의 오른쪽에 추가
+- deque.extendleft(array) : 주어진 array 배열을 순환하며 q의 왼족에 추가
+- deque.remove(item) : 해당 item을 deque에서 찾아서 삭제
+- deque.rotate(숫자) : 해당 수만큼 회전 (양수 : 시계방향, 음수 : 반시계)
+
+
+데크를 공부하는데 가장 기본적이고 좋은 문제인 듯 싶다.
