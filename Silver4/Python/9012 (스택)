@@ -1,0 +1,23 @@
+#13:15 - 13:37
+
+import sys
+input = sys.stdin.readline
+
+for _ in range(int(input())):
+    cnt = 0
+    t = list(input().rstrip())
+    for i in t:
+        if i == '(':
+            cnt += 1
+        elif i == ')':
+            cnt -= 1
+        if cnt < 0:
+            break
+    if cnt != 0:
+        print("NO")
+    else:
+        print("YES")
+        
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+#처음에 간과한 점
+())(() cnt가 0이 돼서 VPS라고 착각한다. 음수가 나오는 경우를 추가해준다.
