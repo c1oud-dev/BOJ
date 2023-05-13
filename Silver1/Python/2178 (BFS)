@@ -36,3 +36,49 @@ print(BFS(0, 0))
 #회고
 - N x M 배열은 상하좌우를 확인할 수 있는 코드를 넣어야 한다.
 - 큐에 append하고 pop하는 것에 익숙해져야 한다.
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+23.05.12~23.05.13
+
+from collections import deque
+import sys
+input = sys.stdin.readline #입출력 향상
+
+N, M = map(int, input().split()) #N = 행, M = 열
+graph = []
+for _ in range(N): #행
+    graph.append(list(map(int, input().rstrip()))) #split()을 안 붙이면 공백 없이 입력 받을 수 있다.
+    #이중 리스트 만들어짐, rstrip
+
+#상하좌우를 다 확인하기 위한 걸 추가 (아래는 좌우하상 순대로 저장)
+dx = [-1, 1, 0, 0]
+dy = [0, 0, 1, -1]
+
+def BFS(x, y):
+    q = deque() #덱 생성
+    q.append((x, y)) #초기 위치
+
+    while q:
+        x, y = q.popleft()  # 꺼내기
+        #print(q)
+
+        # 좌우상하에 길이 있는지 좌표 이동하면서 확인
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+
+            # 이동하다가 미로 밖으로 벗어나면 안 되기 때문에 무시한다.
+            if nx < 0 or nx >= N or ny < 0 or ny >= M:
+                continue
+
+            # 길(1)이 발견되면 해당 칸으로 좌표 이동
+            if graph[nx][ny] == 1:
+                graph[nx][ny] = graph[x][y] + 1 #graph[x][y]는 최소의 거리를 저장, 1을 더한 값을 graph[nx][ny에 저장
+                print(graph[nx][ny])
+                q.append((nx, ny))  # 이동 된 nx, ny를 queue에 집어 넣기
+
+    return graph[N - 1][M - 1]  # 최종 n, m 위치에서의 graph 값 즉, 최소 거리를 반환함
+
+print(BFS(0, 0))
+
+이해 완료!
