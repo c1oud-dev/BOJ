@@ -1,0 +1,131 @@
+# 19:00 - 19:50(포기하고 풀이 봄) 근데 봐도 안 됨 23.05.13 / 15:35 - 16:05 (BFS는 에러 안 나는데 DFS가 에러 = 메모리 초과)
+from collections import deque
+import sys
+input = sys.stdin.readline #입출력 향상
+sys.setrecursionlimit(10**9) #->런타임 에러
+#sys.setrecursionlimit(10**9)
+
+def BFS(x, y):
+    q = deque() #큐 생성
+    q.append((x, y)) #큐에 초기 위치 넣기
+    visited[x][y] = 1
+    # 좌우상하
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, 1, -1]
+
+    #좌표 이동하면서 확인
+    while q:
+        x, y = q.popleft() #큐에서 꺼내서 x, y에 넣기
+
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            '''
+            #그리드 넘어가면 무시
+            if nx < 0 or nx >= N or ny < 0 or ny >= N:
+                continue
+
+            #구역 확인
+            if visited[nx][ny] == 0 and graph[nx][ny] == graph[x][y]:
+                visited[nx][ny] == 1
+                q.append((nx, ny))
+            '''
+            if -1 < nx < N and -1 < ny < N: #이게 문제
+                if graph[nx][ny] == graph[x][y] and visited[nx][ny] == 0:
+                    visited[nx][ny] = 1  # 방문체크 후 큐에 넣음
+                    q.append((nx, ny))
+
+def DFS(x, y):
+    visited[y][x] == 1
+    cur_color = graph[x][y]
+    #좌우상하 확인
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+
+        #if 0 <= nx <= N and 0 <= ny <= N and visited[ny][nx] == 0 and graph[ny][nx] == graph[y][x]:
+            #DFS(nx, ny)
+        if -1 < nx < N and -1 < ny < N and visited[nx][ny] == 0:  # 이게 문제
+            if cur_color == graph[y][x]:
+                DFS(nx, ny)
+
+N = int(input())
+#graph = []
+#for _ in range(N):
+    #graph.append(list(map(str, input().rstrip())))
+graph = [list(map(str, input().rstrip())) for _ in range(N)]
+# 좌우상하
+dx = [-1, 1, 0, 0]
+dy = [0, 0, 1, -1]
+
+#일반인
+visited = [[0]*N for _ in range(N)] #방문 표시
+cnt1 = 0
+for i in range(N):
+    for j in range(N):
+        if visited[i][j] == 0:
+            cnt1 += 1
+            DFS(j, i)
+
+#적록색약
+#visited = [[0 for _ in range(N)] for _ in range(N)]
+visited = [[0]*N for _ in range(N)]
+cnt2 = 0
+for i in range(N):
+    for j in range(N):
+        if graph[i][j] == 'G': #G -> R로 변환
+            graph[i][j] = 'R'
+
+for i in range(N):
+    for j in range(N):
+        if visited[i][j] == 0:
+            cnt2 += 1
+            DFS(j, i)
+print(cnt1, cnt2)
+
+
+/////////////////////////////////////////////////////////////////////////
+런타임 에러 안나는 DFS 풀이
+
+import sys
+sys.setrecursionlimit(100000)
+input = sys.stdin.readline
+
+def DFS(x, y):
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+    visited[y][x] = 1
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if 0 <= nx < N and 0 <= ny < N and graph[y][x] == graph[ny][nx] and visited[ny][nx]==0:
+            DFS(nx, ny)
+
+N = int(input())
+graph = []
+for _ in range(N):
+    graph.append(list(map(str, input().rstrip())))
+visited = [[0]*N for _ in range(N)] #방문 표시
+
+cnt1 = 0
+for i in range(N):
+    for j in range(N):
+        if visited[i][j] == 0:
+            cnt1 += 1
+            DFS(j, i)
+
+#적록색약
+#visited = [[0 for _ in range(N)] for _ in range(N)]
+visited = [[0]*N for _ in range(N)]
+cnt2 = 0
+for i in range(N):
+    for j in range(N):
+        if graph[i][j] == 'G': #G -> R로 변환
+            graph[i][j] = 'R'
+
+for i in range(N):
+    for j in range(N):
+        if visited[i][j] == 0:
+            cnt2 += 1
+            DFS(j, i)
+print(cnt1, cnt2)
