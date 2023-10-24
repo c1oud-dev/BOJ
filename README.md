@@ -6,6 +6,10 @@
 
 메뉴 탭을 누르면 난이도 별로 확인할 수 있습니다.
 
+#### 💻 IDE : Pycharm Community 2022.3v
+#### 📄 Language : Python
+#### 📂 백준 허브를 이용해 commit
+
 
 ### Solved.ac 티어
 [![Solved.ac Profile](http://mazassumnida.wtf/api/generate_badge?boj=gksmf4165)](https://solved.ac/gksmf4165)
