@@ -7,7 +7,7 @@
 
 메뉴에서 난이도 별로 확인할 수 있습니다.
 
-#### 💻 IDE : Pycharm Community 2022.3v
+#### 💻 IDE : Pycharm Community 2022.3v, 2020
 #### 📄 Language : Python
 #### 📂 백준 허브를 이용해 commit
 
