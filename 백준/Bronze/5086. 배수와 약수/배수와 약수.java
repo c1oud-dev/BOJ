@@ -12,21 +12,11 @@ public class Main {
             if (a == 0 && b == 0) {
                 break;
             }
-            int check = 0;
-            for (int i = 1; i <= 10000; i++) {
-                if (b % i == 0) { //약수 중에서
-                    if (i == a) {
-                        System.out.println("factor");
-                        check = 1;
-                        break;
-                    }
-                } else if (b * i == a) {
-                    System.out.println("multiple");
-                    check = 1;
-                    break;
-                }
-            }
-            if (check == 0) {
+            if (b % a == 0) { //약수
+                System.out.println("factor");
+            } else if (a % b == 0) { //배수
+                System.out.println("multiple");
+            } else { //둘 다 아니면
                 System.out.println("neither");
             }
         }
