@@ -5,11 +5,9 @@
 test_case = int(input())
 for tc in range(1, test_case + 1):
     s = input().strip()
-    s_sort = sorted(s) #리스트 형태
-    result = ""
-    if s_sort[0] == s_sort[1] and s_sort[2] == s_sort[3] and s_sort[0] != s_sort[2]:
+    s_set = set(s)
+    if len(s_set) == 2:
         result = "Yes"
     else:
         result = "No"
-
     print("#%d %s" % (tc, result))
