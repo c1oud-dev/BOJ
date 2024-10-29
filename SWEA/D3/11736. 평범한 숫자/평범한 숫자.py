@@ -9,8 +9,6 @@ for test_case in range(1, T + 1):
     result = 0
 
     for i in range(1, N - 1):  # 1, 2, 3
-        min_num = min(nums[i - 1], nums[i], nums[i + 1])  # 최솟값
-        max_num = max(nums[i - 1], nums[i], nums[i + 1])  # 최댓값
-        if min_num != nums[i] and max_num != nums[i]:  # 최소나 최대가 아니면
+        if sorted([nums[i - 1], nums[i], nums[i + 1]])[1] == nums[i]:
             result += 1
     print(f"#{test_case} {result}")
