@@ -1,15 +1,17 @@
+from collections import Counter
+
 T = int(input())  # 테스트 케이스 수
 for test_case in range(1, T + 1):
     word = input().strip()
-    word = sorted(word)  # 정렬하기
+    char_count = Counter(word)
 
-    result = ""
-    for i in word:
-        if word.count(i) % 2 != 0:
-            if i not in result:
-                result += i
+    result = []
+    for char, count in char_count.items():
+        if count % 2 != 0:
+            result.append(char)
+    result = ''.join(sorted(result))
 
-    if len(result) == 0:
+    if not result:
         result = "Good"
 
     print(f"#{test_case} {result}")
