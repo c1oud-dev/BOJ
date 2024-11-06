@@ -1,13 +1,14 @@
 def solution(s):
     answer = []
-    for i in range(len(s)):
-        cnt = 0
-        if s[i] not in s[:i]:
-            answer.append(-1)
+    last_seen = {}  # 각 문자의 마지막 위치를 저장하는 딕셔너리
+    
+    for i, char in enumerate(s):
+        if char in last_seen:
+            # 이전에 등장했다면, 현재 위치와 이전 위치의 차이를 계산
+            answer.append(i - last_seen[char])
         else:
-            for j in s[i-1::-1]:
-                cnt += 1
-                if s[i] == j:
-                    break
-            answer.append(cnt)
+            # 이전에 등장하지 않았다면 -1 추가
+            answer.append(-1)
+        # 현재 위치를 마지막 위치로 갱신
+        last_seen[char] = i
     return answer
