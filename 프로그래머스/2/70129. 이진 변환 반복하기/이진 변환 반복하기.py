@@ -1,17 +1,9 @@
 def solution(s):
-    zero, num, cnt = 0, 0, 0  # 0의 개수, 2진법 길이, 변환 횟수
+    zero, cnt = 0, 0  # 0의 개수, 변환 횟수
 
-    while True:
+    while s != '1':
         cnt += 1
-        for i in s:
-            if i == '1':
-                num += 1
-            else:
-                zero += 1
-        if num == 1:
-            break
-        else:
-            s = format(num, 'b')
-            num = 0
-            
+        zero += s.count('0')  # 0의 개수 추가
+        s = bin(len(s.replace('0', '')))[2:]  # 0을 제거한 길이를 이진수로 변환
+
     return [cnt, zero]
