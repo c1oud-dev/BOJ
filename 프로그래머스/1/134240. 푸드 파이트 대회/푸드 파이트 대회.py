@@ -1,8 +1,3 @@
 def solution(food):
-    answer = ''
-    for i in range(1, len(food)):
-        if food[i] >= 2:  # 2로 나눠야 하므로 2보다 커야 한다.
-            for j in range(food[i] // 2):
-                answer += str(i)
-
+    answer = ''.join(str(foodNumber) * (quantity // 2) for foodNumber, quantity in enumerate(food))
     return answer + '0' + answer[::-1]
